@@ -81,6 +81,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_country_payment_engine
-    session[:payment_country] ||= GeoIp.geolocation(request.remote_ip, precision: :country)[:country_code]
+    session[:payment_country] ||= 'BR' #GeoIp.geolocation(request.remote_ip, precision: :country)[:country_code]
   end
 end

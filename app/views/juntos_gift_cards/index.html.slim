@@ -1,0 +1,33 @@
+.w-container
+  .w-row
+    .w-col.w-col-12
+      p = link_to t('.new'), new_juntos_gift_card_path, class: 'btn', style: 'display: inline'
+
+  - if @cards_in_cart.any?
+    .w-row
+      .w-col.w-col-12
+        h1
+          = t('.your_pending_gifts')
+          = link_to t('.buy'), new_gift_purchase_path, class: 'btn', style: 'display: inline'
+        table.table
+          tbody
+            - @cards_in_cart.each do |card|
+              tr
+                td = link_to card.email, juntos_gift_card_path(card)
+                td
+                  = link_to t('.remove'), juntos_gift_card_path(card), method: :delete, data: { confirm: t('.are_you_sure') } if policy(card).destroy?
+        = link_to t('.buy'), new_gift_purchase_path, class: 'btn', style: 'display: inline'
+
+  .w-row
+    .w-col.w-col-12
+      h1 = t('.your_gifts')
+  .w-row
+    .w-col.w-col-12
+      table.table
+        tbody
+          - @cards.each do |card|
+            tr
+              td = link_to card.email, juntos_gift_card_path(card)
+              td
+                = link_to t('.remove'), juntos_gift_card_path(card), method: :delete, data: { confirm: t('.are_you_sure') } if policy(card).destroy?
+      = paginate @cards

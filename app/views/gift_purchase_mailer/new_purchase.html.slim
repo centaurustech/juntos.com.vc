@@ -1,0 +1,7 @@
+p = "#{@gift.user.name} enviou um cartão-presente para você"
+
+= image_tag @gift.image.url
+
+== simple_format @gift.description
+
+p = "Doação de #{@gift.value} para o projeto #{@gift.project.name}"

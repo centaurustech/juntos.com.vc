@@ -1,0 +1,5 @@
+.w-container
+  .w-row
+    - @purchase.juntos_gift_cards.each do |card|
+      .w-col.w-col-12
+        = link_to card.title, juntos_gift_card_path(card)

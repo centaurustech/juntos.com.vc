@@ -141,6 +141,10 @@ Catarse::Application.routes.draw do
   # Feedback form
   resources :feedbacks, only: [:create]
 
+  resources :juntos_gift_cards, path: :gifts, only: %i(index show new create destroy)
+  resources :gift_purchases, only: %i(index show new create)
+  get '/resgatar-presente/:id', to: 'gift_purchases#redeem', as: :redeem_gift_purchase
+
   namespace :admin do
     resources :home_banners, only: [:index, :new, :create, :destroy, :edit, :update]
 
@@ -184,6 +188,9 @@ Catarse::Application.routes.draw do
     end
 
     resources :pages, only: [:show, :update, :edit, :index]
+
+    resources :gift_card_categories
+    resources :default_gift_cards
   end
 
   get "/:permalink" => "projects#show", as: :project_by_slug

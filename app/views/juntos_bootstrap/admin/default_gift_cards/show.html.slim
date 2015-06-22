@@ -1,0 +1,12 @@
+p = link_to t('.edit'), edit_admin_default_gift_card_path(@card)
+p = link_to t('.delete'), admin_default_gift_card_path(@card), method: :delete, data: { confirm: 'Are you sure?' }
+
+p = @card.gift_card_category.name
+h2= @card.name
+h3 = @card.title
+div
+  - if @card.image?
+    = image_tag @card.image.url
+- if @card.description
+  = simple_format @card.description
+

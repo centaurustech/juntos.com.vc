@@ -99,6 +99,7 @@ pt:
           error_duplicate: "Este cartão doação já foi utilizado."
           error_value: "Este cartão doação não é deste valor informado."
           error_coupon: "Cartão doação não encontrado."
+          error_expired: "Cartão doação expirou"
       show:
         header_subtitle: Sem você talvez este projeto não tivesse uma chance. Bem-vindo
           ao time!

@@ -1,0 +1,12 @@
+.w-container
+  .w-row
+    .w-col.w-col-12
+      = link_to t('.new_gift'), new_juntos_gift_card_path
+  .w-row
+    .w-col.w-col-12
+      h1 Seus presentes enviados
+  .w-row
+    - @gift_purchases.each do |purchase|
+      .w-col.w-col-3
+        p = number_to_currency purchase.value
+        p = purchase.state

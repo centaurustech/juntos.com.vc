@@ -1,0 +1,9 @@
+pt:
+  juntos_gift_cards:
+    index:
+      are_you_sure: Tem certeza?
+      buy: Comprar
+      new: Adicionar novo cartão
+      remove: Remover
+      your_pending_gifts: Compras pendentes
+      your_gifts: Suas compras

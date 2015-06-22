@@ -1,0 +1,7 @@
+.w-container
+  .w-row
+    - @defaults_cards.each do |default_card|
+      .w-col.w-col-4
+        = link_to new_juntos_gift_card_path(default_card: default_card) do
+          h3 = default_card.name 
+          = image_tag default_card.image.url

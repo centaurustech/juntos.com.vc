@@ -1,0 +1,5 @@
+pt:
+  juntos_gift_cards:
+    show:
+      back: 'Voltar'
+      to: "Para: %{email}"

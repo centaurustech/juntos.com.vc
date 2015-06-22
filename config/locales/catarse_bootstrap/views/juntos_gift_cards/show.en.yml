@@ -1,0 +1,4 @@
+en:
+  juntos_gift_cards:
+    show:
+      to: "To: %{email}"

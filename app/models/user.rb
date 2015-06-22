@@ -66,6 +66,8 @@ class User < ActiveRecord::Base
   has_many :contributed_projects, -> { where(contributions: { state: 'confirmed' } ).uniq } ,through: :contributions, source: :project
   has_many :category_followers
   has_many :categories, through: :category_followers
+  has_many :gift_purchases
+  has_many :juntos_gift_cards
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
   has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
 

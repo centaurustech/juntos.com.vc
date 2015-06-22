@@ -1,0 +1,40 @@
+.w-container
+  .w-row
+    .w-col.w-col-12
+      = simple_form_for @purchase do |f|
+        table
+          tbody
+            - @cards.each_with_index do |card, index|
+              tr
+                td
+                  = index + 1
+                td
+                  h1 = card.title
+                td
+                  = simple_format card.description
+                td
+                  = image_tag card.image.url
+                td
+                  p = number_to_currency card.value, precision: 2
+            tr
+              td
+                = t('.total')
+              td
+              td
+              td
+              td
+                = number_to_currency @purchase.value, precision: 2
+
+        = f.input :payer_name, as: :string, label: 'Nome'
+        = f.input :payer_email, as: :string, label: 'Email'
+        = f.input :payer_document, as: :string, label: 'Documento (CPF/CNPJ)'
+        = f.input :address_street, as: :string, label: 'Logradouro'
+        = f.input :address_number, as: :string, label: 'Número'
+        = f.input :address_complement, as: :string, label: 'Complemento'
+        = f.input :address_neighbourhood, as: :string, label: 'Bairro'
+        = f.input :address_zip_code, as: :string, label: 'CEP'
+        = f.input :address_city, as: :string, label: 'Cidade'
+        = f.input :address_state, as: :string, label: 'Estado'
+        = f.input :address_phone_number, as: :string, label: 'Telefone'
+        = f.association :country, label: 'País'
+        = f.submit

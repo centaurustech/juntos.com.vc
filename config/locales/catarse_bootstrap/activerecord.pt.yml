@@ -11,6 +11,8 @@ pt:
       press: Midia
       page: 'Página'
       transparency_report: 'Relatório de Trasparência'
+      juntos_gift_card: Cartão presente
+      gift_purchase: Compra de cartões presente
     attributes:
       bank_account:
         bank: 'Banco'
@@ -48,6 +50,13 @@ pt:
         address_phone_number: "Telefone"
         reward: recompensa
         project: projeto
+      juntos_gift_card:
+        anonymous: Contribuição anônima
+        description: Mensagem do cartão
+        email: Email do presenteado
+        project: Projeto
+        title: Título
+        value: Valor
       reward:
         deliver_at: Previsão de entrega
       project:

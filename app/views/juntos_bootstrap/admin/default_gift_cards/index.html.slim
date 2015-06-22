@@ -1,0 +1,29 @@
+- content_for(:title)
+  = t(".title")
+br
+br
+.admin
+  .w-container
+    .w-row
+      .w-col.w-col-12
+        h1= @title = t('.title')
+    .w-row
+      .w-col.w-col-12
+        = link_to t('.categories'), admin_gift_card_categories_path, class: 'btn btn-large'
+        = link_to t('.new_card'), new_admin_default_gift_card_path, class: 'btn btn-large'
+        table.table
+          thead
+            tr
+              th id
+              th = DefaultGiftCard.human_attribute_name(:name)
+              th = t('.actions')
+          tbody
+            - @cards.each do |card|
+              tr
+                td = link_to card.id, admin_default_gift_card_path(card)
+                td = link_to card.name, admin_default_gift_card_path(card)
+                td
+                  = link_to t('.edit'), edit_admin_default_gift_card_path(card)
+                  = link_to t('.destroy'), admin_default_gift_card_path(card), method: :delete, data: { confirm: 'Are you sure?' }
+  = paginate @cards
+

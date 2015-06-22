@@ -1,0 +1,9 @@
+= simple_form_for [:admin, @card] do |f|
+  = f.association :gift_card_category
+  = f.input :name
+  = f.input :image
+  = f.input :image_cache, as: :hidden
+  = f.input :title
+  = f.input :description
+  = f.submit
+

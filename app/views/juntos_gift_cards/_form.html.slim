@@ -1,0 +1,16 @@
+.w-container
+  .w-row
+    .w-col.w-col-12
+      = simple_form_for @card do |f|
+        - if @card.persisted?
+          = image_tag @card.image.url
+        - else
+          = image_tag @card.default_gift_card.image.url
+        = f.input :email
+        = f.input :title
+        = f.input :description
+        = f.input :value
+        = f.input :anonymous
+        = f.input :default_gift_card_id, as: :hidden
+        = f.association :project, collection: Project.with_state('online').includes(:project_total)
+        = f.submit

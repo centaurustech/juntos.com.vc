@@ -1,0 +1,16 @@
+.w-container
+  .w-row
+    .w-col.w-col-12
+      p = link_to t('.back'), juntos_gift_cards_path, class: 'btn', style: 'display: inline'
+      p = t('.to', email: @card.email)
+
+      p #{JuntosGiftCard.human_attribute_name(:anonymous)}: #{t("#{@card.anonymous? ? 'yes' : 'no'}")}
+      - if @card.project
+        p = @card.project.name
+      p = number_to_currency @card.value
+
+      h1.title = @card.title
+
+      = image_tag @card.image.url
+
+      = simple_format @card.description

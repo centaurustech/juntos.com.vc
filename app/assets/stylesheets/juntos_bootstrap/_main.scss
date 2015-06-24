@@ -3986,3 +3986,179 @@ input.partner-label {
 .upcase {
   text-transform: uppercase;
 }
+.donators {
+  .project-box {
+    &:nth-child(3n) {
+      margin: 0px 20px 1.5em 0px;
+    }
+    &:nth-child(4n) {
+      margin: 0px 0px 1.5em 0px;
+    }
+  }
+
+  #see-projects {
+    background: #FEB84C;
+    .project-box {
+      background: #fff;
+      color: #000;
+    }
+    .list-title {
+      color: #fff;
+      span {
+        color: #59A89E;
+      }
+    }
+  }
+  #call-header {
+    background-image: asset-url('donator/bg-top.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    border-bottom: 10px solid #FCB756;
+    color: #fff;
+    padding: 70px 0px;
+    h1 {
+      font-size: 2.2em;
+      text-transform: uppercase;
+      border: 1px solid #fff;
+      display: inline;
+      padding: 10px;
+      span {
+        color: #3BA89D;
+      }
+    }
+    p {
+      font-size: 1.5em;
+      line-height: 1.4em;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+    .cta {
+      font-size: 1.6em;
+      display: inline-block;
+      background: #3BA89D;
+      color: #FFF;
+      text-transform: uppercase;
+      padding: 20px;
+    }
+  }
+  #money-invest {
+    background: #F2F2F2;
+    padding: 10px 0 50px 0;
+    h2 {
+      color: #FCB756;
+    }
+    .table-row {
+      margin-top: 30px;
+    }
+    .tables {
+      color: #000;
+      p {
+        padding: 2px 0;
+        margin: 0;
+        background: #FFF;
+      }
+    }
+    .table-header, .total {
+      background: #F9A629;
+      color: #FFF;
+      text-align: center;
+      font-weight: bold;
+      margin: 0;
+      padding: 5px 0;
+      p {
+        background: none;
+      }
+    }
+  }
+  #about-all {
+    background-image: asset-url('donator/bg_institucional.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding: 70px 0px;
+    .with-border {
+      border: 1px solid #FCB756;
+      width: 100%;
+      height: 100%;
+      min-height: 330px;
+      padding: 0px 10px;
+    }
+    .big {
+      color: #FCB756;
+      font-size: 2em;
+      text-transform: uppercase;
+      padding-top: 25px;
+      text-align: center;
+      font-weight: bold;
+    }
+    ul {
+      padding: 0;
+      list-style: inside;
+    }
+  }
+  #donate {
+    .cta-signup {
+      margin: 60px 0;
+      text-align: center;
+      a {
+        background: #3BA99E;
+        color: #FCB756;
+        padding: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1.3em;
+      }
+    }
+    form {
+      margin-bottom: 30px;
+    }
+    .input.date, .input.phone {
+      label {
+        display: block;
+      }
+      select {
+        display: inline;
+      }
+    }
+    .input-auto {
+      width: auto;
+    }
+    .donator_plan_code {
+      .field-label {
+        display: block;
+      }
+    }
+    .radio {
+      display: inline-block;
+      width: 20%;
+      text-align: center;
+      input {
+        display: block;
+        &:checked {
+          border: 1px solid red;
+        }
+      }
+    }
+    .plan-code-inputs {
+      label {
+        font-size: 30px;
+        padding: 10px 0px;
+        display: inline-block;
+        cursor: pointer;
+        &.active {
+          border: 1px solid #f00;
+        }
+      }
+      label > input {
+        display: none;
+      }
+      label > input + img{
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+      label > input:checked + img {
+        border: 2px solid #f00;
+      }
+    }
+  }
+}

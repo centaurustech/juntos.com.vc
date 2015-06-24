@@ -37,7 +37,8 @@ html
     = render 'shared/footer_channel'
   - else
     = render 'shared/footer_big'
-  = javascript_include_tag :application
+  - moip_url = Rails.env.production? ? 'https://api.moip.com.br/moip-assinaturas.min.js' : 'https://sandbox.moip.com.br/moip-assinaturas.min.js'
+  = javascript_include_tag 'lib/jquery.js', moip_url, :application
   = render_google_analytics_script
   = render_mixpanel_script
   = render '/layouts/new_zendesk'

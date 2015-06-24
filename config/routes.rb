@@ -94,6 +94,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :donators, only: %i(new create)
+
   get "/termos-de-uso" => 'high_voltage/pages#show', id: 'terms_of_use', as: 'terms_of_use'
   get "/politica-de-privacidade" => 'high_voltage/pages#show', id: 'privacy_policy', as: 'privacy_policy'
   get "/como-funciona" => 'high_voltage/pages#show', id: 'start', as: :start

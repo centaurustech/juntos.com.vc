@@ -1,0 +1,133 @@
+= render 'shared/header_big'
+
+.donators
+  #call-header
+    .w-container
+      .w-row
+        .w-col.w-col-12
+          h1
+            | Juntos.
+            span com
+            | .vc
+
+          p A Juntos.com.vc já nasceu de pessoas se encontrando, se juntando para mudar a realidade com a qual conviviam. Nossos fundadores são pessoas que sempre foram voluntárias em instituições e sentiam a necessidade de ter algum outro meio para conseguir captar dinheiro para os projetos que queriam ver realizados acontecerem, sem ser pelos às vezes tão árduos patrocínios e editais.
+
+          = link_to 'Contribua!', '#donator-form', class: 'cta'
+
+  #money-invest
+    .w-container
+      .w-row
+        .w-col.w-col-12
+          h2 Investimos sua doação em sua doação em uma equipe profissional
+          p Nossa pequena equipe dá conta das mobilizações iniciadas por mais de 130 mil pessoas. Aqui, usamos uma estrutura eficiente e ágil para aumentar ao máximo o impacto de cada real que recebemos. Todos os meses, investimos nossos recursos conforme ilustrado abaixo, com algumas pequenas variações.
+
+          p.big Custo mensal para o juntos.com.vc
+          p.big Transparência juntos.com.vc, acesse a nossa prestação de contas do exercício 2013:
+          ul
+            li = link_to 'Demonstrativo do exercício 2013', '#todo'
+            li = link_to 'Balanço patrimonial 2013', '#todo'
+            li = link_to 'Auditoria externa 2013', '#todo'
+
+      .w-row.table-row
+        .w-col.w-col-6.tables
+          .table-header
+            p Equipe dedicada
+          .w-col-8.text-right.w-col
+            p 5 Coordenadores de mobilização
+          .w-col-4.w-col
+            p.value R$ 25.934
+          .w-col-8.text-right.w-col
+            p 3 Assistentes de mobilização
+          .w-col-4.w-col
+            p.value R$ 8.655
+          .w-col-8.text-right.w-col
+            p 2 Coordenadores de relacionamento
+          .w-col-4.w-col
+            p.value R$ 15.994
+        .w-col.w-col-6.tables
+          .table-header
+            p Administrativo e legal
+          .w-col-8.text-right.w-col
+            p 1 Assistente administrativo
+          .w-col-4.w-col
+            p.value R$ 3.000
+          .w-col-8.text-right.w-col
+            p Contabilidade
+          .w-col-4.w-col
+            p.value R$ 3.000
+          .w-col-8.text-right.w-col
+            p Assistência jurídica
+          .w-col-4.w-col
+            p.value R$ 3.000
+        .w-col.w-col-6.tables
+          .table-header
+            p Equipe compartilhada com parceiros
+          .w-col-8.text-right.w-col
+            p Desenvolvedor Ruby on Rails
+          .w-col-4.w-col
+            p.value R$ x.xxx
+        .w-col.w-col-6.tables
+          .table-header
+            p Materiais de trabalho e custos de escritório
+          .w-col-8.text-right.w-col
+            p Mailing e software
+          .w-col-4.w-col
+            p.value R$ 2.000
+          .w-col-8.text-right.w-col
+            p Materiais de mobilização
+          .w-col-4.w-col
+            p.value R$ 3.000
+        .w-col.w-col-12.tables
+          .total
+            p Total mensal: R$ 100.000
+
+  #about-all
+    .w-container
+      .w-row
+        .w-col.w-col-12
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+        .w-col.w-col-3
+          .with-border
+            p.big Missão
+            p Despertar pessoas em busca de uma transformação social usando a força do coletivo e das redes de comunicação para reduzir diferenças e multiplicar boas ações.
+        .w-col.w-col-3
+          .with-border
+            p.big Visão
+            p Ser referência no Terceiro Setor como organização sólida e idônea que seleciona projetos de impacto social positivo, estimulando e engajando doadores a participarem dessa mudança.
+        .w-col.w-col-3
+          .with-border
+            p.big Valores
+            p A ética, a transparência, o comprometimento social, o profissionalismo, a inovação, o envolvimento, aidoneidade, a solidez e o espírito de coletividade.
+        .w-col.w-col-3
+          .with-border
+            p.big Objetivos
+            ul
+              li Apoiar a captação de recursos para projetos sociais.
+              li Contribuir para o aumento da cultura de doação no Brasil.
+              li Dar mais visibilidade para projetos sociais
+              li Democratizar a doação no Brasil, ou seja, fazer com quee qualquer pessoa possa contribuir com projetos sociais.
+
+  #see-projects
+    .w-container
+      .container
+        .main
+          section.selected_projects.list
+            header
+              h2.list-title
+                | Encontre projetos 
+                span que inspiram
+            .projects
+              == render @projects
+
+  #donate
+    .w-container
+      - if user_signed_in?
+        - if @exist_donation
+          = render 'cancel'
+        - else
+          = render 'form'
+      - else
+        .w-row
+          .w-col.w-col-12.cta-signup
+            = link_to t('shared.header_channel.signup', default: 'Cadastre-se'), new_user_registration_path 

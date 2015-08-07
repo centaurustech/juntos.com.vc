@@ -4,9 +4,19 @@ $(document).ready( function(){
     var form = $('form#donator-form');
     var errorDiv = $("#donation-errors");
 
+    $('input.monthly').on('change', function(){
+      if($('.payment-engine-selector:checked').val() == 'Paypal' || $('.payment-engine-selector').length == 0) {
+        var chosedPaypal = $('.paypal-hide-forms .' + $('input[name=plan_monthly]:checked').val()).html()
+        $('.form-actions .paypal').html(chosedPaypal).show().parent('.form-actions').show();
+      }
+    });
     $('.plan-code-inputs label').on('click', function(){
       $('.plan-code-inputs label').removeClass('active');
       $(this).addClass('active');
+      if($('.payment-engine-selector:checked').val() == 'Paypal' || $('.payment-engine-selector').length == 0) {
+        var chosedPaypal = $('.paypal-hide-forms .' + $('input[name=plan_monthly]:checked').val()).html()
+        $('.form-actions .paypal').html(chosedPaypal).show().parent('.form-actions').show();
+      }
     });
 
     $('.payment-engine-selector').on('change', function(){
@@ -14,7 +24,9 @@ $(document).ready( function(){
       if($(this).val() == 'Paypal'){
         $('#moip-fields').addClass('w-lightbox-hide');
         $('.form-actions .moip').hide();
-        $('.form-actions .paypal').html($('.paypal-hide-forms').html()).show().parent('.form-actions').show(); // TODO verificar aqui o resto da linha' + $('input[name=plan_monthly]:checked').val() + '.' + $('input[name=plan_monthly]:checked').val() ));
+        var chosedPaypal = $('.paypal-hide-forms .' + $('input[name=plan_monthly]:checked').val()).html()
+        $('.form-actions .paypal').html(chosedPaypal).show().parent('.form-actions').show();
+
       } else {
         $('#paypal-fields').addClass('w-lightbox-hide');
         $('.form-actions .paypal').hide().parent('.form-actions').hide();
@@ -64,7 +76,7 @@ $(document).ready( function(){
       var subscription = new Subscription()
         .with_code(subscription_code)
         .with_new_customer(customer)
-        .with_plan_code($('#plan_code').val());
+        .with_plan_code( $('.plan-code-inputs input:checked').data( $('input[name=plan_monthly]:checked').val() == 'one' ? 'one' : 'more' ) );
       moip.subscribe(subscription).callback( function(response){
         if (response.has_errors()) {
           errorDiv.empty();

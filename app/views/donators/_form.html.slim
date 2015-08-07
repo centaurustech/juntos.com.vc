@@ -1,70 +1,154 @@
 #donationWidget[data-token="#{CatarseSettings.get_without_cache(:moip_token)}" data-id="user#{current_user.id}" data-code="#{Donator.where(user: current_user).count+1}"]
 
-= simple_form_for @donator, html: { id: 'donator-form' } do |f|
-  legend Dados pessoais
-  .w-row
-    .w-col.w-col-6
-      = f.input :fullname, input_html: { id: 'fullname' }, label: 'Nome completo'
-    .w-col.w-col-6
-      = f.input :email, input_html: { id: 'email' }
-  .w-row
-    .w-col.w-col-4
-      = f.input :cpf, placeholder: 'Somente números', input_html: { id: 'cpf' }
-    .w-col.w-col-4.required.input.phone
-      label.field-label Telefone
-      .w-col.w-col-4
-        = f.input_field :phone_area_code, placeholder: '00', id: 'ddd'
-      .w-col.w-col-8
-        = f.input_field :phone_number, placeholder: '00000000', id: 'phone'
-    .w-col.w-col-4
-      = f.input :birthdate, start_year: 1920, end_year: Date.today.year, input_html: { class: 'input-auto' }
+.paypal-hide-forms.w-lightbox-hide
+  form[action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="monthly doacao_001"]
+    input[type="hidden" name="cmd" value="_s-xclick"]
+    input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----"
+    input[type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"]
+    img[alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1"]
+  form[action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="monthly doacao_002"]
+    input[type="hidden" name="cmd" value="_s-xclick"]
 
+    input[type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"]
+    img[alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1"]
+  form[action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="monthly doacao_003"]
+    input[type="hidden" name="cmd" value="_s-xclick"]
+
+    input[type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"]
+    img[alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1"]
+  form[action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="monthly doacao_004"]
+    input[type="hidden" name="cmd" value="_s-xclick"]
+
+    input[type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"]
+    img[alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1"]
+  form[action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="monthly doacao_005"]
+    input[type="hidden" name="cmd" value="_s-xclick"]
+
+    input[type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"]
+    img[alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1"]
+  form[action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="one doacao_006"]
+    input[type="hidden" name="cmd" value="_s-xclick"]
+
+    input[type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"]
+    img[alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1"]
+  form[action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="one doacao_007"]
+    input[type="hidden" name="cmd" value="_s-xclick"]
+
+    input[type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"]
+    img[alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1"]
+  form[action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="one doacao_008"]
+    input[type="hidden" name="cmd" value="_s-xclick"]
+
+    input[type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"]
+    img[alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1"]
+  form[action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="one doacao_009"]
+    input[type="hidden" name="cmd" value="_s-xclick"]
+
+    input[type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"]
+    img[alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1"]
+  form[action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="one doacao_010"]
+    input[type="hidden" name="cmd" value="_s-xclick"]
+
+    input[type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!"]
+    img[alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1"]
+  
+
+= simple_form_for @donator, html: { id: 'donator-form' } do |f|
+  = f.input :key, as: :hidden
+
+  legend Quatas vezes deseja colaborar?
+  label
+    input.monthly[type="radio" name="plan_monthly" value="monthly" checked]
+    |  Mensalmente
+  label
+    input.monthly[type="radio" name="plan_monthly" value="one"]
+    |  Uma única vez
+  
   legend Selecione o plano
 
-  = f.input :plan_code, collection: [['R$ 15', 'doacao_001'], ['R$ 30', 'doacao_002'], ['R$ 50', 'doacao_003'], ['R$ 100', 'doacao_004'], ['R$ 200', 'doacao_005']], as: :radio_buttons, input_html: { id: 'plan_code' }
+  .plan-code-inputs
+    = f.input_field :plan_code, collection: [['R$ 15', 'doacao_001', data: { value: 15, one: 'doacao_006', more: 'doacao_001' }], ['R$ 30', 'doacao_002', data: { value: 15, one: 'doacao_006', more: 'doacao_001' }], ['R$ 50', 'doacao_003', data: { value: 15, one: 'doacao_006', more: 'doacao_001' }], ['R$ 100', 'doacao_004', data: { value: 15, one: 'doacao_006', more: 'doacao_001' }], ['R$ 200', 'doacao_005', data: { value: 15, one: 'doacao_006', more: 'doacao_001' }]], as: :radio_buttons
 
-  legend Informações de Cobrança
-  .w-row
-    .w-col.w-col-5
-      .control-group.required
-        label.control-label.field-label[for="holder_name"] Nome do Portador
-        .controls
-          input#holder_name.w-input.text-field[maxlength="45" name="holder_name" placeholder=("Nome escrito no cartão") type="text"]
-    .w-col.w-col-4.required
-      .control-group
-        label.control-label.field-label[for="credit_card"] Número Cartão de Credito
-        .controls
-          input#credit_card.w-input.text-field[maxlength="16" name="credit_card" placeholder="XXXXXXXXXXXX1234" type="text"]
-    .w-col.w-col-3
-      .control-group.input.date.required
-        label.control-label.field-label Data de Expiração
-        .controls
-          select#expiration_month.input-mini.w-input.text-field.input-auto[name="expiration_month"]
-            - %w(01 02 03 04 05 06 07 08 09 10 11 12).each do |month|
-              option[value="#{month}"] = month
-          |  - 
-          select#expiration_year.input-small.w-input.text-field.input-auto[name="expiration_year"]
-            - (Date.today..40.years.from_now).each do |date|
-              option[value="#{date.strftime '%y'}"] = date.year
+  - if session[:payment_country] != 'BR'
+    legend Como prefere pagar?
 
-  .w-row
-    .w-col.w-col-3
-      = f.input :street, placeholder: 'Rua, Avenida, Praça...', input_html: { id: 'rua' }, label: 'Rua'
-    .w-col.w-col-3
-      = f.input :street_number, input_html: { id: 'numero', class: 'input-auto' }, label: 'Número'
-    .w-col.w-col-3
-      = f.input :street_complement, input_html: { id: 'complemento', class: 'input-auto' }, label: 'Complemento'
-    .w-col.w-col-3
-      = f.input :district, input_html: { id: 'bairro' }, label: 'Bairro'
-  .w-row
-    .w-col.w-col-4
-      = f.input :zipcode, input_html: { id: 'cep' }, label: 'CEP'
-    .w-col.w-col-4
-      = f.input :uf, collection: ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Sul", "Rio Grande do Norte", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"], prompt: 'Selecione o Estado (UF)', input_html: { id: 'estado', class: 'input-auto' }
-    .w-col.w-col-4
-      = f.input :city, input_html: { id: 'cidade' }, label: 'Cidade'
+    label
+      input.payment-engine-selector[type="radio" name="donator[payment_engine]" value="Moip"]
+      |  Cartão de crédito
+    label
+      input.payment-engine-selector[type="radio" name="donator[payment_engine]" value="Paypal"]
+      |  Paypal
+
+  #paypal-fields.w-lightbox-hide
+    .w-row
+      .w-col.w-col-12
+        
+
+  #moip-fields.w-lightbox-hide
+    legend Dados pessoais
+    .w-row
+      .w-col.w-col-6
+        = f.input :fullname, input_html: { id: 'fullname' }, label: 'Nome completo'
+      .w-col.w-col-6
+        = f.input :email, input_html: { id: 'email' }
+    .w-row
+      .w-col.w-col-4
+        = f.input :cpf, placeholder: 'Somente números', input_html: { id: 'cpf' }
+      .w-col.w-col-4.required.input.phone
+        label.field-label Telefone
+        .w-col.w-col-4
+          = f.input_field :phone_area_code, placeholder: '00', id: 'ddd'
+        .w-col.w-col-8
+          = f.input_field :phone_number, placeholder: '00000000', id: 'phone'
+      .w-col.w-col-4
+        = f.input :birthdate, start_year: 1920, end_year: Date.today.year, input_html: { class: 'input-auto' }
+
+    legend Informações de Cobrança
+    .w-row
+      .w-col.w-col-5
+        .control-group.required
+          label.control-label.field-label[for="holder_name"] Nome do Portador
+          .controls
+            input#holder_name.w-input.text-field[maxlength="45" name="holder_name" placeholder=("Nome escrito no cartão") type="text"]
+      .w-col.w-col-4.required
+        .control-group
+          label.control-label.field-label[for="credit_card"] Número Cartão de Credito
+          .controls
+            input#credit_card.w-input.text-field[maxlength="16" name="credit_card" placeholder="" type="text"]
+      .w-col.w-col-3
+        .control-group.input.date.required
+          label.control-label.field-label Data de Expiração
+          .controls
+            select#expiration_month.input-mini.w-input.text-field.input-auto[name="expiration_month"]
+              - %w(01 02 03 04 05 06 07 08 09 10 11 12).each do |month|
+                option[value="#{month}"] = month
+            |  - 
+            select#expiration_year.input-small.w-input.text-field.input-auto[name="expiration_year"]
+              - (Date.today.year..40.years.from_now.year).each do |year|
+                option[value="#{year.to_s.last(2)}"] = year
+
+    .w-row
+      .w-col.w-col-3
+        = f.input :street, placeholder: 'Rua, Avenida, Praça...', input_html: { id: 'rua' }, label: 'Rua'
+      .w-col.w-col-3
+        = f.input :street_number, input_html: { id: 'numero', class: 'input-auto' }, label: 'Número'
+      .w-col.w-col-3
+        = f.input :street_complement, input_html: { id: 'complemento', class: 'input-auto' }, label: 'Complemento'
+      .w-col.w-col-3
+        = f.input :district, input_html: { id: 'bairro' }, label: 'Bairro'
+    .w-row
+      .w-col.w-col-4
+        = f.input :zipcode, input_html: { id: 'cep' }, label: 'CEP'
+      .w-col.w-col-4
+        = f.input :uf, collection: ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Sul", "Rio Grande do Norte", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"], prompt: 'Selecione o Estado (UF)', input_html: { id: 'estado', class: 'input-auto' }
+      .w-col.w-col-4
+        = f.input :city, input_html: { id: 'cidade' }, label: 'Cidade'
 
   .form-actions
-    /a#donate-button.btn.btn-large.btn-primary[href="#"] Assinar
-    = f.submit 'Assinar', class: 'btn btn-primary btn-large'
+    .moip[style="display: none"]
+      = f.submit 'Assinar', class: 'btn btn-primary btn-large'
+.form-actions[style="display: none"] 
+  form[action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="paypal"]
+  .subscribe
+    p Você pode cancelar sua assinatura a qualquer momento no seu #{{link_to 'perfil', 'https://www.paypal.com/cgi-bin/customerprofileweb?cmd=_manage-paylist', target: '_blank'}} do Paypal.
 #donation-errors

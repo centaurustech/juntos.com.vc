@@ -18,16 +18,20 @@
     .w-container
       .w-row
         .w-col.w-col-12
+          h1 Porque ser um Amigo da Juntos.com.vc?
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    /.w-container
+      .w-row
+        .w-col.w-col-12
           h2 Investimos sua doação em sua doação em uma equipe profissional
           p Nossa pequena equipe dá conta das mobilizações iniciadas por mais de 130 mil pessoas. Aqui, usamos uma estrutura eficiente e ágil para aumentar ao máximo o impacto de cada real que recebemos. Todos os meses, investimos nossos recursos conforme ilustrado abaixo, com algumas pequenas variações.
-
           p.big Custo mensal para o juntos.com.vc
           p.big Transparência juntos.com.vc, acesse a nossa prestação de contas do exercício 2013:
           ul
             li = link_to 'Demonstrativo do exercício 2013', '#todo'
             li = link_to 'Balanço patrimonial 2013', '#todo'
             li = link_to 'Auditoria externa 2013', '#todo'
-
       .w-row.table-row
         .w-col.w-col-6.tables
           .table-header
@@ -108,6 +112,30 @@
               li Dar mais visibilidade para projetos sociais
               li Democratizar a doação no Brasil, ou seja, fazer com quee qualquer pessoa possa contribuir com projetos sociais.
 
+  /#realtime
+    .transparency-headline
+      .transparency-wrapper
+        .follow
+          p Acompanhe em tempo real:
+          .wihtout-comission Não cobramos comissão!
+    .transparency-values
+      - statistics = Statistics.first
+      .transparency-wrapper
+        .collectect-money
+          h2 = number_with_precision(statistics.total_contributed, precision: 0)
+          b valor em R$
+          br
+          span arrecadados
+        .donations-number
+          h2 = statistics.total_contributions
+          b doações
+          br
+          span realizadas
+        .succesfull-projects
+          h2 = Project.visible.select{ |p| p.progress >= 100 || p.state == 'successful' }.count
+          b projetos
+          br
+          span apoiados
   #see-projects
     .w-container
       .container

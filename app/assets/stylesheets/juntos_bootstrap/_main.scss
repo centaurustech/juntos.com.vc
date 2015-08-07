@@ -3996,6 +3996,67 @@ input.partner-label {
     }
   }
 
+  .transparency-wrapper {
+    width: 960px;
+    margin: 0 auto !important;
+    color: white;
+  }
+  .transparency-headline {
+    background: #FF8A41;
+    .follow {
+      height: 2em;
+      vertical-align: middle;
+      width: 100%;
+      p {
+        display: inline-block;
+        font-size: 1.2em;
+        float: left;
+        margin-top: 0.3em;
+        width: 300px;
+      }
+    }
+    .wihtout-comission {
+      font-size: 1.2em;
+      float: right;
+      margin-top: 0.3em;
+    }
+  }
+  .transparency-values {
+    background-color: #FEB84C;
+    height: 3.5em;
+    margin-bottom: 30px;
+    .transparency-wrapper {
+      padding-top: 0.8em;
+    }
+    h2 {
+      float: left;
+      font-size: 2em;
+      font-weight: bold;
+      margin-right: 5px;
+      text-align: right;
+      width: 60%;
+    }
+    b {
+      font-size: 0.9em;
+    }
+    span {
+      font-size: 0.9em;
+      text-transform: uppercase;
+    }
+    .collectect-money {
+      display: inline-block;
+      width: 33%;
+    }
+    .donations-number {
+      display: inline-block;
+      width: 33%;
+    }
+    .succesfull-projects {
+      display: inline-block;
+      width: 33%;
+    }
+  }
+
   #see-projects {
     background: #FEB84C;
     .project-box {
@@ -4042,8 +4103,15 @@ input.partner-label {
     }
   }
   #money-invest {
-    background: #F2F2F2;
+    background: #459CA1;
+    color: #FFF;
+    text-align: center;
     padding: 10px 0 50px 0;
+    h1 {
+      margin-top: 30px;
+      margin-bottom: 25px;
+      font-weight: bold;
+    }
     h2 {
       color: #FCB756;
     }
@@ -4141,10 +4209,14 @@ input.partner-label {
     }
     .plan-code-inputs {
       label {
-        font-size: 30px;
-        padding: 10px 0px;
+        font-size: 36px;
+        padding: 50px 0px;
         display: inline-block;
         cursor: pointer;
+        width: 19%;
+        margin-right: 1%;
+        background: #f1f1f1;
+        border: 1px solid #fff;
         &.active {
           border: 1px solid #f00;
         }

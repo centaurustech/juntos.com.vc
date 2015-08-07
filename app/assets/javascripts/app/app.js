@@ -71,4 +71,13 @@ var App = window.App = Skull.View.extend({
 
 $(function(){
   var app = window.app = new App();
+  $('.s3-uploader').S3Uploader();
+  //$('.s3-uploader').bind('s3_upload_complete', function(e, content){
+    //console.log(content.url);
+    //$('#' + $(this).data('field')).val(content.url);
+  //});
+  //$('.s3-uploader').bind("s3_upload_failed", function(e, content){
+    //console.log(content);
+    //alert(content.error_thrown);
+  //});
 });

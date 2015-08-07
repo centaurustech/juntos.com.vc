@@ -131,6 +131,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/moip/donator/notification', to: 'donators#moip_notification'
+
   # Root path should be after channel constraints
   root to: 'projects#index'
 
